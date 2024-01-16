@@ -9,29 +9,13 @@ func main() {
 }
 
 func isSubsequence(s string, t string) bool {
-	if s == "" {
-		return true
-	}
-
-	if t == "" {
-		return false
-	}
-	idx := 0
-
-	for _, c := range t {
-		if idx > len(s)-1 {
-			break
+	k := 0
+	for i := 0; i < len(t); i++ {
+		if k < len(s) && s[k] == t[i] {
+			k++
 		}
-		if c == rune(s[idx]) {
-			fmt.Println(c)
-			idx++
-		}
-	}
 
-	if idx == len(s) {
-		return true
 	}
-
-	return false
+	return len(s) == k
 
 }
