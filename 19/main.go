@@ -4,29 +4,31 @@ func main() {
 
 }
 
-func longestCommonPrefix(strs []string) string {
-	prefix := strs[0]
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 
-	for _, str := range strs {
-		if len(str) < len(prefix) {
-			prefix = str
-		}
+func removeNthFromEnd(head *ListNode, n int) *ListNode {
+	if head == nil {
+		return nil
 	}
 
-	idx := 0
+	dummy := &ListNode{0, head}
 
-	for prefix != "" {
-		if strs[idx][:len(prefix)] != prefix {
-			prefix = prefix[:len(prefix)-1]
-			idx = 0
-			continue
-		}
-		if idx == len(strs)-1 {
-			break
-		}
-		idx++
+	cur := dummy
+	ptr := dummy
+
+	for i := 0; i <= n; i++ {
+		ptr = ptr.Next
 	}
 
-	return prefix
+	for ptr != nil {
+		cur = cur.Next
+		ptr = ptr.Next
+	}
 
+	cur.Next = cur.Next.Next
+
+	return dummy.Next
 }
