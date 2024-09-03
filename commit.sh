@@ -2,7 +2,7 @@
 
 # Check if there are no arguments provided
 if [ "$#" -eq 0 ]; then
-    echo "Usage: $0 <problem_number> [<problem_number> ...]"
+    echo "Usage: $0 <problem_name> [<problem_name> ...]"
     exit 1
 fi
 
@@ -12,9 +12,9 @@ for problem in "$@"; do
     if [ -d "$problem" ]; then
         # Add the folder to the staging area
         git add "$problem"
-        
+
         # Commit the changes with a meaningful message
-        git commit -m "add: $problem solution"
+        git commit -m "add: solution for $problem"
         echo "Committed solution for problem $problem"
     else
         echo "Folder for problem $problem not found. Skipping."

@@ -1,19 +1,19 @@
 #!/bin/bash
 
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 <folder_number>"
+    echo "Usage: $0 <folder_names>"
     exit 1
 fi
 
-folder_number=$1
-folder_name="$folder_number"
+folder_name=$1
+folder="$folder_name"
 
 # Create folder
-mkdir "$folder_name"
-cd "$folder_name" || exit 1
+mkdir "$folder"
+cd "$folder" || exit 1
 
 # Execute go mod init
-go mod init "$folder_name"
+go mod init "$folder"
 
 # Create main.go with a basic main function
 echo "package main
@@ -22,4 +22,4 @@ func main() {
 
 }" > main.go
 
-echo "Project setup completed in folder: $folder_name"
+echo "Project setup completed in folder: $folder"
