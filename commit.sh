@@ -6,9 +6,9 @@ if [ "$#" -eq 0 ]; then
     exit 1
 fi
 
-# Iterate through each provided problem number
+# Iterate through each provided problem
 for problem in "$@"; do
-    # Check if the folder for the problem number exists
+    # Check if the folder for the problem exists
     if [ -d "$problem" ]; then
         # Add the folder to the staging area
         git add "$problem"
@@ -22,4 +22,4 @@ for problem in "$@"; do
 done
 
 # Push changes to the remote repository
-git push
+# git push
